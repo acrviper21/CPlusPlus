@@ -52,6 +52,7 @@ int main()
         intDayNumber += intDay;
     }
     std::cout << "The day number is: " << intDayNumber;
+    return 0;
 }
 
 //Function takes into account the leapyear

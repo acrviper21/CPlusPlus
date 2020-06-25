@@ -8,6 +8,7 @@
 #include <cstdlib>
 using namespace std;
 
+//Function prototype
 void displayIntro(string&, string&);
 void displayBoard(char[], int);
 bool playersMove(char[], int, string, int&, char, string, char);
@@ -15,6 +16,7 @@ bool isGameOver(char[], int, char, string, char, string);
 
 int main()
 {
+    //Variables
     const int boardSize = 9;
     string firstPlayer = " ";
     string secondPlayer = " ";
@@ -26,7 +28,11 @@ int main()
     char playerTwo = 'O';
     bool gameOver = false;
     int playerMove;
+
+    //Gather the players names
     displayIntro(firstPlayer, secondPlayer);
+
+    //Loop through the game until a player wins or a tie occurs
     while (gameOver != true)
     {
         gameOver = playersMove(board, boardSize, firstPlayer, playerMove,
@@ -36,6 +42,7 @@ int main()
     return 0;
 }
 
+//Display the game and gather players info
 void displayIntro(string& firstPlayer, string& secondPlayer)
 {
     cout << "Welcome to TIC-TAC-TOE" << endl;
@@ -45,6 +52,7 @@ void displayIntro(string& firstPlayer, string& secondPlayer)
     cout << "Enter second players name: ";
     cin >> secondPlayer;
 }
+//Display the board for the players
 void displayBoard(char board[], int size)
 {
     int count = 0;
@@ -59,6 +67,10 @@ void displayBoard(char board[], int size)
     }
 }
 
+//Loop through for each players turn
+//Display board for players
+//Update board with player moves
+//Check that each move is a valid move
 bool playersMove(char board[], int boardSize, string firstPlayer, 
     int& playerMove, char playerOne, string secondPlayer, char playerTwo)
 {
@@ -92,6 +104,8 @@ bool playersMove(char board[], int boardSize, string firstPlayer,
     board[playerMove - 1] = playerTwo;
 }
 
+//Check after each move to see if anymore available moves are left
+//Or if a player won
 bool isGameOver(char board[], int boardSize, char playerOne, string firstPlayer,
     char playerTwo, string secondPlayer)
 {

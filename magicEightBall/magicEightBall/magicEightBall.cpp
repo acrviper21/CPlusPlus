@@ -13,27 +13,39 @@ using namespace std;
 
 int main()
 {
+    //Variables
     char userChoice = ' ';
     string question = "";
     vector<string> eightBallRepsonse;
     string response = "";
-    ifstream inputFile;
-    inputFile.open("magicBallResponse.txt");
     srand(time(NULL));
 
+    //Open file
+    ifstream inputFile;
+    inputFile.open("magicBallResponse.txt");
+
+    //Input each line in file into a vector
     while (getline(inputFile, response))
     {
         eightBallRepsonse.push_back(response);
     }
+
+    //Close file
     inputFile.close();
 
+    //Display what the program is
     cout << "This is a magic eight ball. Ask me a question. " << endl;
+
+    //Get question from user
+    //Display random response from vector
     do
     {
         cout << "Enter a yes or no question: ";
         getline (cin, question);
         int responseNumber = rand() % (eightBallRepsonse.size() - 1) + 1;
         cout << eightBallRepsonse[responseNumber] << endl;
+        
+        //Ask user if they want to ask another question
         do
         {
             cout << "Ask another another question? (y or n): ";
@@ -44,5 +56,7 @@ int main()
     } while (userChoice == 'Y');
 
     cout << "Thank you! Come back again! "<< endl;
+
+    return 0;
 }
 
